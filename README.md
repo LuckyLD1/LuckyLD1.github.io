@@ -4,7 +4,21 @@ An interactive factory-floor network mockup with six cabinets and 32 example dev
 
 ## Run locally
 
+### Visual Studio Code with Live Server
+
+Open either the main `Senior Project IP Mapping Project` folder or its `floorlink` subfolder in VS Code. Both include Live Server settings pointing to the website files.
+
+1. Install the recommended **Live Server** extension by **Ritwick Dey** if it is not already installed.
+2. Click **Go Live** in the VS Code status bar.
+3. Visit **http://127.0.0.1:5500/**. Saving edits to the HTML, CSS, or JavaScript refreshes the preview.
+
+The website files are in `floorlink/dist` when opening the main folder, or `dist` when opening the subfolder. Stop and restart Live Server if it was running before these settings were added.
+
+### Visual Studio or a terminal
+
 With Node.js installed, run `npm start` from this directory and visit http://127.0.0.1:4173. No dependency installation or build step is required. Run `npm test` for layout and data validation tests.
+
+If you opened the main folder in VS Code, you can also select **Terminal → Run Task → Preview Floorlink on localhost** to start this Node preview without an extension. Use Live Server for automatic refresh on save, or refresh manually with the Node preview.
 
 ## Use
 
@@ -17,6 +31,12 @@ With Node.js installed, run `npm start` from this directory and visit http://127
 - Drag the map to pan; scroll or use the controls to zoom. Escape closes the device form, inspector, or panel. Reduced-motion preferences are honored.
 
 ## Host anywhere
+
+### GitHub Pages (LuckyLD)
+
+The included `.github/workflows/pages.yml` deploys `dist/` automatically when you push to `main`, after checking the JavaScript and layout tests. Open this **floorlink subfolder** as your repository root and follow [the complete GitHub Pages setup guide](GITHUB_PAGES.md). For a repository named `floorlink`, the expected URL after deployment is **https://luckyld.github.io/floorlink/**. In the repository's **Settings → Pages**, select **GitHub Actions** as the publishing source.
+
+### Other static hosts
 
 Deploy the contents of `dist/` to any static HTTPS host. There is no server API, database, runtime framework, or build requirement. Google Fonts is optional; system fonts provide fallbacks when unavailable. `server.mjs` is only a local preview server.
 
