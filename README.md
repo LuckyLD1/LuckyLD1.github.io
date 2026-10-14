@@ -1,45 +1,77 @@
-# Floorlink — Factory Network Atlas
+# Floorlink
 
-An interactive factory-floor network mockup with six cabinets and 32 example devices, using the supplied cabinet photo as a visual reference.
+An interactive factory network map with six example cabinets and 32 devices. Explore panel interiors, inspect IP addresses and connections, and customize equipment on snapping DIN rails.
 
-## Run locally
+## Open the project
 
-### Visual Studio Code with Live Server
+Open this folder in VS Code:
 
-Open either the main `Senior Project IP Mapping Project` folder or its `floorlink` subfolder in VS Code. Both include Live Server settings pointing to the website files.
+```text
+C:\Users\lucas_f0pwh7q\OneDrive\Desktop\Senior Project IP Mapping Project\LuckyLD1.github.io
+```
 
-1. Install the recommended **Live Server** extension by **Ritwick Dey** if it is not already installed.
-2. Click **Go Live** in the VS Code status bar.
-3. Visit **http://127.0.0.1:5500/**. Saving edits to the HTML, CSS, or JavaScript refreshes the preview.
+This is the project's only repository. It is connected to `https://github.com/LuckyLD1/LuckyLD1.github.io.git` on branch `main`.
 
-The website files are in `floorlink/dist` when opening the main folder, or `dist` when opening the subfolder. Stop and restart Live Server if it was running before these settings were added.
+## Files
 
-### Visual Studio or a terminal
+| File or folder | Purpose |
+| --- | --- |
+| `dist/index.html` | Website entry point |
+| `dist/app.js` | Map, cabinets, device inspector, and editing interactions |
+| `dist/model.js` | Example equipment and layout validation |
+| `dist/styles.css` | Styling, animations, and responsive layouts |
+| `dist/.nojekyll` | Static-site marker for GitHub Pages |
+| `.github/workflows/pages.yml` | Checks and automatic GitHub Pages deployment |
+| `tests/model.test.mjs` | IP, connection, import, and rail-placement checks |
+| `server.mjs` | Local preview server |
+| `package.json` | Commands for previewing and testing |
+| `.gitignore` | Excludes local tools and generated archives from Git |
 
-With Node.js installed, run `npm start` from this directory and visit http://127.0.0.1:4173. No dependency installation or build step is required. Run `npm test` for layout and data validation tests.
+The hidden `.git` folder stores version history and the GitHub connection. The ignored `.vscode` folder contains local Live Server settings.
 
-If you opened the main folder in VS Code, you can also select **Terminal → Run Task → Preview Floorlink on localhost** to start this Node preview without an extension. Use Live Server for automatic refresh on save, or refresh manually with the Node preview.
+## Preview locally
 
-## Use
+With Node.js installed, run from this folder:
 
-- Click any map marker or panel card to open its cabinet front elevation.
-- Click a device for its IP, model, description, status, location, and connections. Click a connected device to navigate to it, including across panels.
-- Open the top-right IP directory, expand subnet groups, or search by IP, device, and panel. Selecting a result focuses the panel and opens the device inspector.
-- Select **Edit panel** to drag devices from the library onto a rail or reposition existing equipment. Devices snap to the nearest available slot and cannot overlap or extend beyond a rail. Click a library item to add without dragging; **Move rail** provides a touch and keyboard alternative for repositioning.
-- Edit device details and select connections in the inspector. IPv4 addresses must be valid and unique.
-- Changes persist automatically in the current browser. Export a JSON backup and import it on another device. Import validates panel geometry, IP uniqueness, equipment placement, and connection references. Undo restores the latest edits for the current session.
-- Drag the map to pan; scroll or use the controls to zoom. Escape closes the device form, inspector, or panel. Reduced-motion preferences are honored.
+```powershell
+npm start
+```
 
-## Host anywhere
+Open **http://127.0.0.1:4173/**. No installation or build step is needed. Press **Ctrl+C** in that terminal to stop the server.
 
-### GitHub Pages (LuckyLD)
+Alternatively, with the **Live Server** extension by Ritwick Dey in VS Code, click **Go Live** and open **http://127.0.0.1:5500/**. The local settings serve `dist/` and refresh on save. If those ignored settings are unavailable in another checkout, right-click `dist/index.html` and select **Open with Live Server**.
 
-The included `.github/workflows/pages.yml` deploys `dist/` automatically when you push to `main`, after checking the JavaScript and layout tests. Open this **floorlink subfolder** as your repository root and follow [the complete GitHub Pages setup guide](GITHUB_PAGES.md). For a repository named `floorlink`, the expected URL after deployment is **https://luckyld.github.io/floorlink/**. In the repository's **Settings → Pages**, select **GitHub Actions** as the publishing source.
+## Use the app
 
-### Other static hosts
+- Click a map marker or panel card to open the cabinet.
+- Select a device to inspect its IP, description, model, and connections. Select a connection to navigate to that device.
+- Search or expand subnet groups in the IP directory to locate equipment.
+- Select **Edit panel** to add or drag equipment onto rails. Equipment snaps into available slots and cannot overlap. Clicking a library item and using **Move rail** are alternatives to dragging.
+- Edit device addresses, names, descriptions, statuses, and connections in the inspector. Addresses must be valid and unique.
+- Use **Undo** to reverse edits during the current session. Export and import JSON to transfer layouts between browsers or sites.
 
-Deploy the contents of `dist/` to any static HTTPS host. There is no server API, database, runtime framework, or build requirement. Google Fonts is optional; system fonts provide fallbacks when unavailable. `server.mjs` is only a local preview server.
+The app saves edits in the current browser, not in GitHub. Each visitor has a separate layout. All initial equipment, addresses, statuses, and wiring are demonstration data; the app does not scan or control a live network.
 
-This prototype uses browser-local storage, not shared multi-user storage. Network status, devices, wiring, equipment displays, floor geometry, and IP addresses are fictitious demonstration data. The app does not scan networks, query real device statuses, or control equipment. The example addresses match the requested 172.168.0.xxx through 172.168.4.xxx ranges. Use your assigned addresses for real installations.
+## Publish updates
 
-Source files: `dist/model.js` contains example data and validation; `dist/app.js` contains interactions and rendering; `dist/styles.css` contains styling and responsive layouts.
+In the GitHub repository, **Settings → Pages → Source** must be **GitHub Actions**. The included workflow checks the project and publishes only `dist/` on each push to `main`.
+
+```powershell
+git add .
+git commit -m "Update Floorlink"
+git push
+```
+
+Track deployment in the repository's **Actions** tab. After a successful deployment, the site is available at **https://luckyld1.github.io/**. You can also manually run **Deploy Floorlink to GitHub Pages** from Actions.
+
+The workflow is required for this automatic publishing setup. It is not required to view the app locally. If deployment fails, confirm the Pages source is GitHub Actions, then rerun the workflow. The published URL is shown in Settings → Pages.
+
+To use another static host, upload the contents of `dist/`. Asset paths are relative, so the app can also run under a subdirectory. The preview server and tests are not deployed.
+
+## Check changes
+
+```powershell
+npm test
+```
+
+The tests cover example data, valid IP addresses, unique addresses, rail collisions and capacity, imported layouts, and device connections.
