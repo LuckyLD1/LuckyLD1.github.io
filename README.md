@@ -16,7 +16,8 @@ This is the project's only repository. It is connected to `https://github.com/Lu
 
 | File or folder | Purpose |
 | --- | --- |
-| `dist/index.html` | Website entry point |
+| `dist/index.html` | Simple landing page with a link to the workspace |
+| `dist/workspace.html` | Full factory map and panel-editing workspace |
 | `dist/app.js` | Map, cabinets, device inspector, and editing interactions |
 | `dist/model.js` | Example equipment and layout validation |
 | `dist/styles.css` | Styling, animations, and responsive layouts |
@@ -43,6 +44,7 @@ Alternatively, with the **Live Server** extension by Ritwick Dey in VS Code, cli
 
 ## Use the app
 
+- On the home page, select **Open Floorlink workspace**. The Floorlink logo in the workspace returns to the home page.
 - Click a map marker or panel card to open the cabinet.
 - Select a device to inspect its IP, description, model, and connections. Select a connection to navigate to that device.
 - Search or expand subnet groups in the IP directory to locate equipment.

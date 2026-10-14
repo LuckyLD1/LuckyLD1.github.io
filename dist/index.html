@@ -1,3 +1,50 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f6f8"><meta name="description" content="Explore your factory network, from the floor to the port. An interactive industrial network atlas."><title>Floorlink — Factory Network Atlas</title><link rel="stylesheet" href="styles.css"></head>
-<body><div id="app"></div><div id="toast" role="status" aria-live="polite"></div><script type="module" src="app.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f7">
+  <meta name="description" content="Floorlink brings your factory floor, control panels, and device IP addresses together in one workspace.">
+  <title>Floorlink — Your Factory Network</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #253b39; background: #f5f7f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100svh; display: flex; flex-direction: column; }
+    header, footer { padding: 28px clamp(24px, 6vw, 88px); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 23px; font-weight: 700; letter-spacing: -1px; }
+    .brand-icon { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 9px; background: #16856c; color: white; }
+    svg { width: 23px; height: 23px; }
+    main { flex: 1; display: grid; place-items: center; padding: 56px 24px 90px; }
+    .intro { width: 100%; max-width: 610px; text-align: center; }
+    .eyebrow { margin: 0 0 20px; color: #16856c; font-size: 11px; font-weight: 650; letter-spacing: 2px; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(36px, 5vw, 56px); font-weight: 600; letter-spacing: -2px; line-height: 1.12; text-wrap: balance; }
+    .description { max-width: 430px; margin: 24px auto 32px; font-size: 16px; line-height: 1.7; color: #71837e; text-wrap: pretty; }
+    .open-workspace { display: inline-flex; align-items: center; justify-content: center; gap: 18px; padding: 15px 23px; background: #16856c; color: white; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .18s, transform .18s; }
+    .open-workspace:hover { background: #116d59; transform: translateY(-2px); }
+    .open-workspace:focus-visible { outline: 3px solid #16856c; outline-offset: 5px; }
+    .open-workspace svg { width: 18px; height: 18px; }
+    .note { margin: 18px 0 0; color: #82918b; font-size: 12px; }
+    footer { border-top: 1px solid #e3e9e6; font-size: 11px; color: #82918b; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 500px) { header, footer { padding: 22px 24px; } main { padding: 50px 24px 70px; } h1 { letter-spacing: -1.3px; } }
+    @media (prefers-reduced-motion: reduce) { .open-workspace { transition: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand" aria-label="Floorlink">
+      <span class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-5 9 5-9 5Zm0 5 9 5 9-5M3 17l9 5 9-5"/></svg></span>
+      floorlink<span style="color: #9cb7aa">.</span>
+    </div>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="welcome-title">
+      <p class="eyebrow">Factory network atlas</p>
+      <h1>Your factory network,<br>in one place.</h1>
+      <p class="description">Explore your floor, open a panel, and find the devices and connections inside.</p>
+      <a class="open-workspace" href="workspace.html">Open Floorlink workspace <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+      <p class="note">Interactive demo · Six example panels</p>
+    </section>
+  </main>
+  <footer><span>Floorlink</span><span>Map. Inspect. Connect.</span></footer>
+</body>
+</html>

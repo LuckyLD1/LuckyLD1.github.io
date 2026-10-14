@@ -32,6 +32,7 @@ jobs:
           node --check dist/model.js
           node --test tests/model.test.mjs
           test -f dist/index.html
+          test -f dist/workspace.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
