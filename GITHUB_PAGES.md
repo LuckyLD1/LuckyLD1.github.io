@@ -46,7 +46,7 @@ If you already have an empty repository with a different name, use its URL below
 In VS Code, open **Terminal → New Terminal**. Run these commands from the `floorlink` folder:
 
 ```powershell
-git add .github dist .vscode tests package.json server.mjs README.md GITHUB_PAGES.md .gitignore
+git add .
 git commit -m "Prepare Floorlink for GitHub Pages"
 git remote add origin https://github.com/LuckyLD/floorlink.git
 git push -u origin main

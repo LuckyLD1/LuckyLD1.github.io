@@ -2,3 +2,12 @@ node_modules/
 *.tar.gz
 *.zip
 .DS_Store
+
+# Local ChatGPT / Codex configuration
+.openai/
+.codex/
+
+# Local VS Code / Visual Studio configuration
+.vscode/
+.vs/
+*.code-workspace
